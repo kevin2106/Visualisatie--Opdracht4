@@ -80,11 +80,11 @@ public class DataModel {
     }
     
     public float convertLat(){
-        float mapLat = map(getLatitude(), 53.489790f, 52.822716f, 0, 954);
+        float mapLat = map(getLatitude(), 52.822716f, 53.489790f, 0, 920);
         return mapLat;      
     }
     public float convertLong(){
-        float mapLong = map(getLongitude(), 6.128558f, 7.189256f, 0, 920);
+        float mapLong = map(getLongitude(), 7.189256f, 6.128558f, 0, 954);
         return mapLong;
     }
 }

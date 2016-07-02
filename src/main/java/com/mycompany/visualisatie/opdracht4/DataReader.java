@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -56,8 +58,13 @@ public class DataReader {
             dm.setMagnitude(Float.parseFloat(row[4]));
             dm.setDepth(Float.parseFloat(row[5]));
 
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            Date date = formatter.parse(row[6]);
+            dm.setDate(date);
+
             list.add(dm);
         }
+
         return list;
     }
 

@@ -21,7 +21,7 @@ public class DataModel {
     private String location;
     private float magnitude;
     private float depth;
-    private Date datum;
+    private Date date;
 
     public float getLongitude() {
         return longitude;
@@ -71,12 +71,12 @@ public class DataModel {
         this.depth = depth;
     }
 
-    public Date getDatum() {
-        return datum;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDatum(Date datum) {
-        this.datum = datum;
+    public void setDate(Date date) {
+        this.date = date;
     }
     
     public float convertLat(){
@@ -84,7 +84,7 @@ public class DataModel {
         return mapLat;      
     }
     public float convertLong(){
-        float mapLong = map(getLongitude(), 7.189256f, 6.128558f, 0, 954);
+        float mapLong = map(getLongitude(), 7.189256f, 6.128558f, 0, 904);
         return mapLong;
     }
 }

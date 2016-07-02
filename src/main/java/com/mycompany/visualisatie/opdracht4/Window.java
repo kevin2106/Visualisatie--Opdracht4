@@ -18,18 +18,22 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Window extends PApplet {
-    
+
     private PApplet applet;
-    private PImage img;
+    private PImage map, prevButton, nextButton;
     private ArrayList<DataModel> model;
-    
+
     private DataDrawer dataDrawer;
-    
+
     @Override
     public void setup() {
-        size(920, 954);
+        size(920, 1004);
         applet = this;
-        img = loadImage("Kaartgron.png");
+
+        map = loadImage("Kaartgron.png");
+        prevButton = loadImage("prev_button.png");
+        nextButton = loadImage("next_button.png");
+
         DataReader dr = new DataReader();
         dataDrawer = new DataDrawer(applet);
         try {
@@ -43,9 +47,31 @@ public class Window extends PApplet {
 
     @Override
     public void draw() {
-        image(img, 0, 0);
+
+        dataDrawer.drawDate();
+        image(map, 0, 0);
         dataDrawer.drawLocations(model);
+        image(prevButton, 0, 954);
+        image(nextButton, 820, 954);
+
     }
-    
-    
+
+    @Override
+    public void mousePressed() {
+        if (mouseX >= 0 && mouseX <= 100) {
+            if (mouseY >= 954 && mouseY <= 1004) {
+                //prev button
+                dataDrawer.previousDate(model);
+            }
+        }
+
+        if (mouseX >= 820 && mouseX <= 920) {
+            if (mouseY >= 954 && mouseY <= 1004) {
+                //next button
+                dataDrawer.nextDate(model);
+
+            }
+        }
+    }
+
 }

@@ -50,9 +50,11 @@ public class Window extends PApplet {
 
         dataDrawer.drawDate();
         image(map, 0, 0);
-        dataDrawer.drawLocations(model);
+        DataModel selectedEarthquake = dataDrawer.onEarthquakeHover(model);
+        dataDrawer.drawLocations(model, selectedEarthquake);
         image(prevButton, 0, 954);
         image(nextButton, 820, 954);
+        
 
     }
 

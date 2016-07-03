@@ -20,19 +20,21 @@ import processing.core.PImage;
 public class Window extends PApplet {
 
     private PApplet applet;
-    private PImage map, prevButton, nextButton;
+    private PImage map, prevButton, nextButton, winLocatieImg;
     private ArrayList<DataModel> model;
 
     private DataDrawer dataDrawer;
 
     @Override
     public void setup() {
+        frame.setTitle("Aardbevingen tegenover gaswinlocaties");
         size(920, 1004);
         applet = this;
 
         map = loadImage("Kaartgron.png");
         prevButton = loadImage("prev_button.png");
         nextButton = loadImage("next_button.png");
+        winLocatieImg = loadImage("gaswinlocatie.png");
 
         DataReader dr = new DataReader();
         dataDrawer = new DataDrawer(applet);
@@ -48,13 +50,21 @@ public class Window extends PApplet {
     @Override
     public void draw() {
 
+        
+        
         dataDrawer.drawDate();
         image(map, 0, 0);
         DataModel selectedEarthquake = dataDrawer.onEarthquakeHover(model);
         dataDrawer.drawLocations(model, selectedEarthquake);
         image(prevButton, 0, 954);
         image(nextButton, 820, 954);
-        
+        image(winLocatieImg, 600, 300);
+        image(winLocatieImg, 175, 500);
+        image(winLocatieImg, 5, 85);
+        ellipse(25, 25, 20, 20);
+        fill(0,0,0);
+        text("0.0", 18, 28);
+        text("= Bevings sterkte", 38, 28);
 
     }
 
